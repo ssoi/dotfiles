@@ -1,0 +1,10 @@
+#aliases for commonly used commands
+alias LS="ls -lgth"
+alias LSA="ls -algth"
+alias WC="wc -l"
+alias TAR="tar -czvf"
+alias UNTAR="tar -xzvf"
+alias MNT="sudo mount -o vers=3"
+alias UPDATE="sudo apt-get update"
+alias UPGRADE="sudo apt-get update"
+alias INSTALL="sudo apt-get install"
