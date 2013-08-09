@@ -3,6 +3,7 @@ suppressMessages(require(hexbin))
 suppressMessages(require(inline))
 suppressMessages(require(multicore))
 suppressMessages(require(splines))
+suppressMessages(require(stringr))
 
 # set options
 curr_repo <- getOption("repos")

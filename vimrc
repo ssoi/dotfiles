@@ -10,4 +10,3 @@ set showmatch "jump to a brace match when you type a closing/opening brace
 set incsearch	"search for text as you enter it
 set textwidth=100 "text wraps after 100 characters/line
 set number "number each line
-set clipboard=unnamed "can use system clipboard
