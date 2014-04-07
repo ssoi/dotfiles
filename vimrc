@@ -5,7 +5,6 @@ color solarized "third-party color scheme
 syntax enable "enable highlighting and completion
 filetype plugin indent on
 set nocompatible	"prevents vim from emulating the original bugs
-set autoindent  "use the current line's indent level 
 set smartindent	"guess the indent level 
 set tabstop=2 "sets up 2-space tabs
 set shiftwidth=2 "use 2 spaces when text is indented
