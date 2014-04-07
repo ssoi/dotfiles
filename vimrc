@@ -1,6 +1,9 @@
+execute pathogen#infect()
+call pathogen#helptags() " generate helptags for everything in 'runtimepath'
 set background=dark
-color liquidcarbon "third-party color scheme
-syntax on "enable highlighting and completion
+color solarized "third-party color scheme
+syntax enable "enable highlighting and completion
+filetype plugin indent on
 set nocompatible	"prevents vim from emulating the original bugs
 set autoindent  "use the current line's indent level 
 set smartindent	"guess the indent level 
