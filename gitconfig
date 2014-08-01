@@ -1,0 +1,25 @@
+[user]
+	name = ssoi
+	email = "(none)"
+	
+[alias]
+	ci = commit
+	st = status
+	co = checkout
+	b = branch
+	rb = rebase
+	undo = "checkout --"
+	
+	l = log
+	d = diff
+	dd = "diff --cached"
+	g = "grep --break --heading --line-number"
+	sl = "stash list --format='%gd: %C(bold)%C(red)%gs'"
+	
+	spull = "smart-pull"
+	mine = !git log --reverse --oneline HEAD...@{upstream}
+	mines = !git show `git minel`
+	minel = !git log --reverse --pretty=format:"%H" HEAD...@{upstream}
+	top = rev-parse --show-toplevel
+	logs = log --reverse -p  -S
+	drop = !"git stash save; git stash drop"
