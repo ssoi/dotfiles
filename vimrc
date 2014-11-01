@@ -18,7 +18,7 @@ set clipboard=unnamed "unnammed register copied to system clipboard
 let g:solarized_termcolors=16
 set background=dark
 color solarized "third-party color scheme
-se t_Co=16
+se t_Co=256
 
 map gn :bn<cr>
 map gp :bp<cr>
