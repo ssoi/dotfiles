@@ -13,6 +13,7 @@ set incsearch	"search for text as you enter it
 set textwidth=100 "text wraps after 100 characters/line
 set number "number each line
 set mouse=a
+set clipboard=unnamed "unnammed register copied to system clipboard
 
 let g:solarized_termcolors=16
 set background=dark
