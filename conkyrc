@@ -1,0 +1,86 @@
+##############################################
+# Settings
+##############################################
+background no
+use_xft yes
+xftfont Monospace:size=14
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type desktop
+own_window_argb_visual yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 200 200
+maximum_width 190
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders yes
+default_color 03E5E5
+default_shade_color 1EA2C7
+default_outline_color white
+color3 979797
+color4 AntiqueWhite4
+gap_x 10
+gap_y 10
+no_buffers no
+alignment top_right
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+text_buffer_size 2048
+max_user_text 65000
+##############################################
+#  Output
+##############################################
+TEXT
+
+#Sector 1: "Date", Time, Date
+${font monospace:bold:size=14}DATE ${hr}
+${font monospace:size=20}${alignc}${time %H:%M}${font}
+
+
+#${font monospace:bold:size=14}${alignc}${time %a %d}
+
+#${voffset 4}${alignc 7}${execpi 60 VinDSL_Cal= date +'${offset 6}%Y'}
+
+#Sector 2: "System", Kernel, Host_Name, Uptime
+${font monospace:bold:size=14}SYSTEM ${hr 2}
+${font monospace:normal:size=10}$sysname $kernel $alignr $machine
+Uptime:$alignr$uptime
+
+#Sector 4: "CPU", Core Frequency, Core temp, CPU1&2 gauge
+${font monospace:bold:size=10}${cpugraph cpu0 03E5E5 03E5E5}
+${font monospace:normal:size=10}Core frequency $color $alignr ${freq_g (1)} GHz
+Core 1 temp: $alignr ${hwmon 0 temp 1} C
+CPU1: ${cpu cpu1}% ${cpubar cpu1}
+CPU2: ${cpu cpu2}% ${cpubar cpu2}
+#${cpugraph cpu1}
+#${cpugraph cpu2}
+
+#Sector 5: "HDD & RAM", RAM use gauge, HDD use gauge
+${font monospace:bold:size=14}HDD & RAM ${hr 2}
+${font monospace:normal:size=10}RAM $alignc $mem / $memmax $alignr $memperc%
+$membar
+
+${font monospace:normal:size=10}HDD $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
+${fs_bar /}
+
+#Sector 6: "Network", IP address, Upload/Download graph
+IP address: $alignr ${addr wlan0}
+${downspeedgraph wlan0}
+${font monospace:normal:size=10}Down:   (Tot: ${totaldown wlan0}) $alignr${downspeed wlan0}/s
+#${upspeedgraph wlan0}
+#${font monospace:normal:size=10}Up:       (Tot: ${totalup wlan0}) $alignr ${upspeed wlan0}/s
+
+#Sector 7: "Top Processes"
+${font monospace:bold:size=14}TOP PROCESSES ${hr 2}
+${font monospace:normal:size=10}${top_mem name 1}${alignr}${top mem 1} %
+${top_mem name 2}${alignr}${top mem 2} %
+$font${top_mem name 3}${alignr}${top mem 3} %
+$font${top_mem name 4}${alignr}${top mem 4} %
+#$font${top_mem name 5}${alignr}${top mem 5} %
+#${execi 300 date +"%B %Y"}.
