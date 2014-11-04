@@ -1,7 +1,6 @@
 # load useful libraries
 suppressMessages(require(hexbin))
 suppressMessages(require(inline))
-suppressMessages(require(multicore))
 suppressMessages(require(splines))
 suppressMessages(require(stringr))
 
