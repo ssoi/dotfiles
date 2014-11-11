@@ -1,7 +1,14 @@
 #!/bin/bash
 
 # install some necessary packages
-sudo apt-get install git vim r-core-dev
+deb http://lib.stat.cmu.edu/R/CRAN//bin/linux/ubuntu trusty/ # add R repo
+apt-add-repository -y "deb http://repository.spotify.com stable non-free" # add spotify repo
+add-apt-repository -y ppa:chromium-daily/stable # add chromium repo
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 # add R key
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59 # add spotify key
+apt-get update
+apt-get update
+apt-get install vim-gtk r-base-dev conky tmux chromium-browser
 
 # install rvm and ruby versions
 \curl -sSL https://get.rvm.io | bash
