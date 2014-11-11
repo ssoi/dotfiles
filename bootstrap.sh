@@ -8,7 +8,7 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 # add R key
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59 # add spotify key
 apt-get update
 apt-get update
-apt-get install vim-gtk r-base-dev conky tmux chromium-browser arandr
+apt-get install vim-gtk r-base-dev conky tmux chromium-browser arandr curl
 
 # install rvm and ruby versions
 \curl -sSL https://get.rvm.io | bash
@@ -22,3 +22,7 @@ gem install git-smart
 # install vim pathogen and packages
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
   curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+cd ~/.vim/bundle
+git clone https://github.com/altercation/vim-colors-solarized.git
+git clone https://github.com/kien/ctrlp.vim.git
+git clone git@github.com:Lokaltog/vim-powerline.git

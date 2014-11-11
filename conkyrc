@@ -42,11 +42,6 @@ TEXT
 ${font monospace:bold:size=14}DATE ${hr}
 ${font monospace:size=20}${alignc}${time %H:%M}${font}
 
-
-#${font monospace:bold:size=14}${alignc}${time %a %d}
-
-#${voffset 4}${alignc 7}${execpi 60 VinDSL_Cal= date +'${offset 6}%Y'}
-
 #Sector 2: "System", Kernel, Host_Name, Uptime
 ${font monospace:bold:size=14}SYSTEM ${hr 2}
 ${font monospace:normal:size=10}$sysname $kernel $alignr $machine
@@ -55,9 +50,11 @@ Uptime:$alignr$uptime
 #Sector 4: "CPU", Core Frequency, Core temp, CPU1&2 gauge
 ${font monospace:bold:size=10}${cpugraph cpu0 03E5E5 03E5E5}
 ${font monospace:normal:size=10}Core frequency $color $alignr ${freq_g (1)} GHz
-Core 1 temp: $alignr ${hwmon 0 temp 1} C
+Core temperature: $alignr ${hwmon 0 temp 1} C
 CPU1: ${cpu cpu1}% ${cpubar cpu1}
 CPU2: ${cpu cpu2}% ${cpubar cpu2}
+CPU3: ${cpu cpu3}% ${cpubar cpu3}
+CPU4: ${cpu cpu4}% ${cpubar cpu4}
 #${cpugraph cpu1}
 #${cpugraph cpu2}
 
@@ -70,11 +67,11 @@ ${font monospace:normal:size=10}HDD $alignc ${fs_used /} / ${fs_size /} $alignr 
 ${fs_bar /}
 
 #Sector 6: "Network", IP address, Upload/Download graph
-IP address: $alignr ${addr wlan0}
-${downspeedgraph wlan0}
-${font monospace:normal:size=10}Down:   (Tot: ${totaldown wlan0}) $alignr${downspeed wlan0}/s
-#${upspeedgraph wlan0}
-#${font monospace:normal:size=10}Up:       (Tot: ${totalup wlan0}) $alignr ${upspeed wlan0}/s
+IP address: $alignr ${addr eth0}
+${downspeedgraph eth0}
+${font monospace:normal:size=10}Down:   (Tot: ${totaldown eth0}) $alignr${downspeed eth0}/s
+#${upspeedgraph eth0}
+#${font monospace:normal:size=10}Up:       (Tot: ${totalup eth0}) $alignr ${upspeed eth0}/s
 
 #Sector 7: "Top Processes"
 ${font monospace:bold:size=14}TOP PROCESSES ${hr 2}
