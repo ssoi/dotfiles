@@ -33,6 +33,7 @@ cpu_avg_samples 2
 override_utf8_locale no
 text_buffer_size 2048
 max_user_text 65000
+no_buffers yes
 ##############################################
 #  Output
 ##############################################
@@ -40,7 +41,8 @@ TEXT
 
 #Sector 1: "Date", Time, Date
 ${font monospace:bold:size=14}DATE ${hr}
-${font monospace:size=20}${alignc}${time %H:%M}${font}
+${font monospace:size=20}${alignc}${time %I:%M%p}${font}
+${font monospace:size=16}${alignc}${time %b, %d, %Y}${font}
 
 #Sector 2: "System", Kernel, Host_Name, Uptime
 ${font monospace:bold:size=14}SYSTEM ${hr 2}

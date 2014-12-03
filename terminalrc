@@ -1,5 +1,5 @@
 [Configuration]
-FontName=Ubuntu Mono 14
+FontName=Ubuntu Mono 11
 ColorCursor=#9393a1a1a1a1
 ColorForeground=#FDFDF6F6E3E3
 ColorBackground=#00002B2B3636
@@ -40,7 +40,6 @@ BackgroundImageFile=/home/ssoi/Pictures/wallpapers/chalkboard_3.jpg
 BackgroundDarkness=1.000000
 BackgroundImageStyle=TERMINAL_BACKGROUND_STYLE_STRETCHED
 BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
-Term=xterm-color
+Term=xterm-256color
 MiscToolbarDefault=FALSE
 MiscScrollAlternateScreen=TRUE
-
