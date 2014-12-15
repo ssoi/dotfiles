@@ -19,7 +19,7 @@ draw_shades no
 draw_outline no
 draw_borders no
 draw_graph_borders yes
-default_color 03E5E5
+default_color white
 default_shade_color 1EA2C7
 default_outline_color white
 color3 979797
