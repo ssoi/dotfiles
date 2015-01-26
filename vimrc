@@ -1,7 +1,7 @@
 execute pathogen#infect()
 call pathogen#helptags() " generate helptags for everything in 'runtimepath'
 
-syntax enable "enable highlighting and completion
+syntax on "enable highlighting and completion
 filetype plugin indent on
 set nocompatible	"prevents vim from emulating the original bugs
 set smartindent	"guess the indent level 
@@ -15,10 +15,10 @@ set number "number each line
 set mouse=a
 set clipboard=unnamed "unnammed register copied to system clipboard
 
-let g:solarized_termcolors=256
-set background=dark
 color solarized "third-party color scheme
+let g:solarized_termcolors=256
 se t_Co=256
+set background=dark
 
 map gn :bn<cr>
 map gp :bp<cr>
