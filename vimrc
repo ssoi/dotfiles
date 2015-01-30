@@ -15,10 +15,10 @@ set number "number each line
 set mouse=a
 set clipboard=unnamed "unnammed register copied to system clipboard
 
-color solarized "third-party color scheme
 let g:solarized_termcolors=256
 se t_Co=256
 set background=dark
+colorscheme solarized "third-party color scheme
 
 map gn :bn<cr>
 map gp :bp<cr>
