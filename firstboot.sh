@@ -8,7 +8,8 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 # add R key
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59 # add spotify key
 apt-get update
 apt-get update
-apt-get install vim-gtk r-base-dev conky tmux chromium-browser arandr curl htop
+apt-get install vim-gtk r-base-dev littler conky tmux chromium-browser \
+                arandr curl htop silversearcher-ag
 
 # install rvm and ruby versions
 \curl -sSL https://get.rvm.io | bash
