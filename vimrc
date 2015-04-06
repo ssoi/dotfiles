@@ -20,6 +20,8 @@ se t_Co=256
 set background=dark
 colorscheme solarized "third-party color scheme
 
+hi Normal ctermbg=none "don't highlight when background transparent
+
 map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
