@@ -3,7 +3,7 @@
 ##############################################
 background no
 use_xft yes
-xftfont Monospace:size=14
+xftfont Monospace:size=10
 xftalpha 1
 update_interval 1.0
 total_run_times 0
@@ -41,17 +41,17 @@ TEXT
 
 #Sector 1: "Date", Time, Date
 ${font monospace:bold:size=14}DATE ${hr}
-${font monospace:size=20}${alignc}${time %I:%M%p}${font}
-${font monospace:size=16}${alignc}${time %b, %d, %Y}${font}
+${font monospace:size=16}${alignc}${time %I:%M%p}${font}
+${font monospace:size=14}${alignc}${time %b, %d, %Y}${font}
 
 #Sector 2: "System", Kernel, Host_Name, Uptime
-${font monospace:bold:size=14}SYSTEM ${hr 2}
+${font monospace:bold.size=12}SYSTEM ${hr 2}
 ${font monospace:normal:size=10}$sysname $kernel $alignr $machine
 Uptime:$alignr$uptime
 
 #Sector 4: "CPU", Core Frequency, Core temp, CPU1&2 gauge
 ${font monospace:bold:size=10}${cpugraph cpu0 03E5E5 03E5E5}
-${font monospace:normal:size=10}Core frequency $color $alignr ${freq_g (1)} GHz
+${font monospace:normal.size=10}Core frequency $color $alignr ${freq_g (1)} GHz
 Core temperature: $alignr ${hwmon 0 temp 1} C
 CPU1: ${cpu cpu1}% ${cpubar cpu1}
 CPU2: ${cpu cpu2}% ${cpubar cpu2}
@@ -61,22 +61,25 @@ CPU4: ${cpu cpu4}% ${cpubar cpu4}
 #${cpugraph cpu2}
 
 #Sector 5: "HDD & RAM", RAM use gauge, HDD use gauge
-${font monospace:bold:size=14}HDD & RAM ${hr 2}
-${font monospace:normal:size=10}RAM $alignc $mem / $memmax $alignr $memperc%
+${font monospace:bold.size=12}HDD & RAM ${hr 2}
+${font monospace:normal.size=10}RAM $alignc $mem / $memmax $alignr $memperc%
 $membar
 
-${font monospace:normal:size=10}HDD $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
+${font monospace:normal:size=10}SSD $alignc ${fs_used /} / ${fs_size /} $alignr ${fs_used_perc /}%
 ${fs_bar /}
+
+${font monospace:normal:size=10}HDD $alignc ${fs_used /home} / ${fs_size /home} $alignr ${fs_used_perc /home}%
+${fs_bar /home}
 
 #Sector 6: "Network", IP address, Upload/Download graph
 IP address: $alignr ${addr eth0}
 ${downspeedgraph eth0}
 ${font monospace:normal:size=10}Down:   (Tot: ${totaldown eth0}) $alignr${downspeed eth0}/s
 #${upspeedgraph eth0}
-#${font monospace:normal:size=10}Up:       (Tot: ${totalup eth0}) $alignr ${upspeed eth0}/s
+#${font monospace:normal.size=10}Up:       (Tot: ${totalup eth0}) $alignr ${upspeed eth0}/s
 
 #Sector 7: "Top Processes"
-${font monospace:bold:size=14}TOP PROCESSES ${hr 2}
+${font monospace:bold:size=12}TOP PROCESSES ${hr 2}
 ${font monospace:normal:size=10}${top_mem name 1}${alignr}${top mem 1} %
 ${top_mem name 2}${alignr}${top mem 2} %
 $font${top_mem name 3}${alignr}${top mem 3} %
