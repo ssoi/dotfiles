@@ -28,3 +28,6 @@ git clone https://github.com/altercation/vim-colors-solarized.git
 git clone https://github.com/kien/ctrlp.vim.git
 git clone https://github.com:Lokaltog/vim-powerline.git
 git clone https://github.com:derekwyatt/vim-scala.git
+
+# customize bashrc
+echo "source `pwd`/bashcustom" >> $HOME/.bashrc
