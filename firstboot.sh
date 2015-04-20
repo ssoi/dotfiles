@@ -21,13 +21,14 @@ rvm use ruby-1.9
 gem install git-smart
 
 # install vim pathogen and packages
-mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-  curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-cd ~/.vim/bundle
+mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle && \
+  curl -LSso $HOME/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+cd $HOME/.vim/bundle
 git clone https://github.com/altercation/vim-colors-solarized.git
 git clone https://github.com/kien/ctrlp.vim.git
-git clone https://github.com:Lokaltog/vim-powerline.git
-git clone https://github.com:derekwyatt/vim-scala.git
+git clone https://github.com/Lokaltog/vim-powerline.git
+git clone https://github.com/derekwyatt/vim-scala.git
+git clone https://github.com/vim-ruby/vim-ruby.git
 
 # customize bashrc
 echo "source `pwd`/bashcustom" >> $HOME/.bashrc
