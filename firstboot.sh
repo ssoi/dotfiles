@@ -24,8 +24,8 @@ then
   brew tap homebrew/science
   brew install gcc
   brew install Caskroom/cask/xquartz
-	brew install r --with-openblas
-	brew install vim --override-system-vi
+  brew install r --with-openblas
+  brew install vim --override-system-vi
 	BASHRC=".bashrc"
 else
 	deb http://lib.stat.cmu.edu/R/CRAN//bin/linux/ubuntu trusty/ # add R repo
