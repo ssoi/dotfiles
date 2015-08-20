@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASHRC=".bash_profile"
+BASHRC=".bashrc"
 # install some necessary packages
 uname -a | grep -il darwin
 if [ $? -eq 0 ]
@@ -26,7 +26,7 @@ then
   brew install Caskroom/cask/xquartz
   brew install r --with-openblas
   brew install vim --override-system-vi
-	BASHRC=".bashrc"
+  BASHRC=".bash_profile"
 else
 	deb http://lib.stat.cmu.edu/R/CRAN//bin/linux/ubuntu trusty/ # add R repo
 	apt-add-repository -y "deb http://repository.spotify.com stable non-free" # add spotify repo
@@ -58,4 +58,5 @@ git clone https://github.com/derekwyatt/vim-scala.git
 git clone https://github.com/vim-ruby/vim-ruby.git
 
 # customize bashrc
+cat aliases >> $HOME/$BASHRC
 echo "source `pwd`/bashcustom" >> $HOME/$BASHRC

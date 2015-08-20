@@ -1,0 +1,8 @@
+alias ll="ls -lth --color=auto"
+alias la="ls -ltha --color=auto"
+alias grep="grep -n --color=auto"
+alias df="df -h"
+alias du="du -c -h"
+alias up="cd ../"
+alias hm="cd ~"
+alias untrail="sed -i 's/\ *$//g'"
