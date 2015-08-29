@@ -1,5 +1,6 @@
 #!/bin/bash
 
+DFILEDIR=`pwd`
 BASHRC=".bashrc"
 # install some necessary packages
 uname -a | grep -il darwin
@@ -42,7 +43,6 @@ fi
 \curl -sSL https://get.rvm.io | bash
 rvm install ruby-1.9
 rvm install jruby
-rvm use ruby-1.9
 
 # install git smart-pull
 gem install git-smart
@@ -58,5 +58,6 @@ git clone https://github.com/derekwyatt/vim-scala.git
 git clone https://github.com/vim-ruby/vim-ruby.git
 
 # customize bashrc
-cat aliases >> $HOME/$BASHRC
-echo "source `pwd`/bashcustom" >> $HOME/$BASHRC
+echo "rvm use ruby-1.9" >> $HOME/$BASHRC
+echo "source $DFILEDIR/aliases" >> $HOME/$BASHRC
+echo "source $DFILEDIR/bashcustom" >> $HOME/$BASHRC
