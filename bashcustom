@@ -1,1 +1,2 @@
+set -o vi
 export PS1="\[\e[00;37m\]\u|\W|*\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)*|\$?>\[\e[0m\] "
