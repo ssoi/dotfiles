@@ -25,9 +25,10 @@ then
   brew tap homebrew/science
   brew install gcc
   brew install Caskroom/cask/xquartz
-  brew install r --with-openblas
-  brew install vim --override-system-vi
-  BASHRC=".bash_profile"
+	brew install r --with-openblas
+	brew install vim --override-system-vi
+	BASHRC=".bashrc"
+  echo "export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home" >> $HOME/$BASHRC
 else
   sudo deb http://lib.stat.cmu.edu/R/CRAN//bin/linux/ubuntu trusty/ # add R repo
   sudo apt-add-repository -y "deb http://repository.spotify.com stable non-free" # add spotify repo
