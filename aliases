@@ -1,5 +1,5 @@
-alias ll="ls -lth --color=auto"
-alias la="ls -ltha --color=auto"
+alias ll="ls -lth"
+alias la="ls -ltha"
 alias grep="grep -n --color=auto"
 alias df="df -h"
 alias du="du -c -h"
