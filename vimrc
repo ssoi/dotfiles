@@ -22,6 +22,7 @@ colorscheme solarized "third-party color scheme
 
 hi Normal ctermbg=none "don't highlight when background transparent
 
+"more effecient way to cycle through buffers
 map gn :bn<cr>
 map gp :bp<cr>
 map gd :bd<cr>
