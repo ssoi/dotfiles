@@ -72,7 +72,7 @@ ${font monospace:normal:size=10}HDD $alignc ${fs_used /home} / ${fs_size /home} 
 ${fs_bar /home}
 
 #Sector 6: "Network", IP address, Upload/Download graph
-IP address: $alignr ${addr eth0}
+IP address: $alignr ${addr wlan0}
 ${downspeedgraph eth0}
 ${font monospace:normal:size=10}Down:   (Tot: ${totaldown eth0}) $alignr${downspeed eth0}/s
 #${upspeedgraph eth0}
