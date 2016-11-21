@@ -30,14 +30,16 @@ then
 	BASHRC=".bashrc"
   echo "export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_05.jdk/Contents/Home" >> $HOME/$BASHRC
 else
-  sudo deb http://lib.stat.cmu.edu/R/CRAN//bin/linux/ubuntu trusty/ # add R repo
+  sudo echo "deb http://lib.stat.cmu.edu/R/CRAN//bin/linux/ubuntu trusty/" >> /etc/apt/sources.list # add R repo
   sudo apt-add-repository -y "deb http://repository.spotify.com stable non-free" # add spotify repo
   sudo add-apt-repository -y ppa:chromium-daily/stable # add chromium repo
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 # add R key
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59 # add spotify key
-  sudo apt-get update
+  sudo apt-get update && sudo apt-get upgrade
   sudo apt-get install vim-gtk r-base-dev littler conky tmux chromium-browser \
-                       arandr curl htop silversearcher-ag
+                       arandr curl htop silversearcher-ag python-dev python-pip \
+                       python3-dev build-essential cmake
+  sudo pip install awscli
 fi
 
 # install rvm and ruby versions
@@ -54,9 +56,13 @@ mkdir -p $HOME/.vim/autoload $HOME/.vim/bundle && \
 cd $HOME/.vim/bundle
 git clone https://github.com/altercation/vim-colors-solarized.git
 git clone https://github.com/kien/ctrlp.vim.git
-git clone https://github.com/Lokaltog/vim-powerline.git
+git clone https://github.com/vim-airline/vim-ariline.git
 git clone https://github.com/derekwyatt/vim-scala.git
 git clone https://github.com/vim-ruby/vim-ruby.git
+git clone https://github.com/Valloric/YouCompleteMe.git
+cd YouCompleteMe
+git submodule update --init --recursive
+./install.py
 
 # customize bashrc
 echo "source $DFILEDIR/aliases" >> $HOME/$BASHRC
