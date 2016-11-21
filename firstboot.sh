@@ -38,7 +38,8 @@ else
   sudo apt-get update && sudo apt-get upgrade
   sudo apt-get install vim-gtk r-base-dev littler conky tmux chromium-browser \
                        arandr curl htop silversearcher-ag python-dev python-pip \
-                       python3-dev build-essential cmake
+                       python3-dev build-essential cmake libxml2-dev libcurl4-openssl-dev \
+                       xorg-dev libglu1-mesa-dev feh
   sudo pip install awscli
 fi
 
