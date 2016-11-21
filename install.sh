@@ -7,12 +7,8 @@ then
 	ln -fs ${DFILES}/conkyrc ${HOME}/.conkyrc
 fi
 
-if [[ -f ${HOME}/.i3/config ]]
-then
-  rm ${HOME}/.i3/config
-  ln -fs ${DFILES}/i3config ${HOME}/.i3/config
-fi
 
+ln -fs ${DFILES}/i3config ${HOME}/.i3/config
 ln -fs ${DFILES}/vimrc ${HOME}/.vimrc 
 ln -fs ${DFILES}/funcs.R ${HOME}/funcs.R 
 ln -fs ${DFILES}/Rprofile ${HOME}/.Rprofile
