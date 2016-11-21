@@ -72,6 +72,10 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# move window to output
+bindsym $mod+m move workspace to output right
+bindsym $mod+n move workspace to output left
+
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -110,6 +114,7 @@ bindsym $mod+Shift+m exec spotify
 bindsym $mod+Shift+s exec slack
 bindsym $mod+Shift+v exec pavucontrol
 bindsym $mod+Shift+d exec /home/ssoi/.screenlayout/double.sh
+bindsym $mod+Shift+o exec /home/ssoi/.screenlayout/single.sh
 
 # default workspaces for programs
 assign [class="Firefox"] 2
