@@ -35,6 +35,7 @@ else
   sudo add-apt-repository -y ppa:chromium-daily/stable # add chromium repo
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9 # add R key
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59 # add spotify key
+  sudo add-apt-repository ppa:jonathonf/vim # add repo for latest vim
   sudo apt-get update && sudo apt-get upgrade
   sudo apt-get install vim-gtk r-base-dev littler conky tmux chromium-browser \
                        arandr curl htop silversearcher-ag python-dev python-pip \
