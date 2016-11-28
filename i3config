@@ -20,6 +20,10 @@ set $mod Mod4
 # chose a FreeType font, such as:
 font pango:DejaVu Sans Mono 10
 
+# startup
+exec_always feh --bg-scale /home/ssoi/Pictures/wallpaper/wallpaper.jpg
+exec_always xfce-power-manager
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
