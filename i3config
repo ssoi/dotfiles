@@ -22,7 +22,7 @@ font pango:DejaVu Sans Mono 10
 
 # startup
 exec_always /home/ssoi/dotfiles/bin/cycle-wallpaper
-exec_always xfce-power-manager
+exec_always xfce-power-manager --no-daemon
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
