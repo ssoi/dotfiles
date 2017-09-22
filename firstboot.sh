@@ -40,13 +40,13 @@ else
   sudo apt-get install vim-gtk r-base-dev littler conky tmux chromium-browser \
                        arandr curl htop silversearcher-ag python-dev python-pip \
                        python3-dev build-essential cmake libxml2-dev libcurl4-openssl-dev \
-                       xorg-dev libglu1-mesa-dev feh i3 xfce-power-manager
+                       xorg-dev libglu1-mesa-dev feh i3 tlp
   sudo pip install awscli
 fi
 
 # install rvm and ruby versions
 \curl -sSL https://get.rvm.io | bash
-rvm install ruby-1.9
+rvm install ruby-2.2
 rvm install jruby
 
 # install git smart-pull
@@ -63,6 +63,7 @@ git clone https://github.com/vim-airline/vim-ariline.git
 git clone https://github.com/derekwyatt/vim-scala.git
 git clone https://github.com/vim-ruby/vim-ruby.git
 git clone https://github.com/Valloric/YouCompleteMe.git
+git clone --depth=1 https://github.com/vim-syntastic/syntastic.git
 
 vim -u NONE -c "helptags vim-fugitive/doc" -c q
 cd YouCompleteMe

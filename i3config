@@ -19,14 +19,12 @@ set $mod Mod4
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-font pango:Ubuntu Mono 12
+font pango:Ubuntu Mono 14
 
 # startup
 exec_always /home/ssoi/dotfiles/bin/cycle-wallpaper
 exec_always nm-applet
-exec_always xmodmap -e "remove lock = Caps_Lock"
-exec_always xmodmap -e "keycode 66 = Control_L"
-exec_always xmodmap -e "add control = Control_L"
+exec_alway setxkbmap -layout us -option ctrl:nocaps
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -107,19 +105,27 @@ bindsym $mod+Control+x restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Control+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+# bind functional keys
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo $HOME/dotfiles/bin/brightness-up
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo $HOME/dotfiles/bin/brightness-down
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
+
 # launch programs
 bindsym $mod+Shift+f exec firefox
-bindsym $mod+Shift+c exec chromium-browser
+bindsym $mod+Shift+c exec chromium-browser --disable-gpu
 bindsym $mod+Shift+m exec spotify
 bindsym $mod+Shift+s exec slack
 bindsym $mod+Shift+v exec pavucontrol
 bindsym $mod+Shift+z exec zoom
 bindsym $mod+Shift+q exec lock -f Ubuntu-Medium -- scrot -z
-bindsym $mod+Shift+x exec xfce-power-manager
+bindsym $mod+Shift+x exec xmind.sh
 
 
 # default workspaces for programs
 assign [class="Firefox"] 2
+assign [class="chromium-browser"] 2
 assign [class="Slack"] 3
 assign [class="Spotify"] 4
 
@@ -128,6 +134,7 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="zoom"] floating enable
 for_window [class="gnome-screenshot"] floating enable
 for_window [class="Arandr"] floating enable
+for_window [class="XMind"] floating enable
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -155,8 +162,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bindsym $mod+Control+d exec /home/ssoi/.screenlayout/double.sh
-bindsym $mod+Control+o exec /home/ssoi/.screenlayout/single.sh
+
+bindsym $mod+Control+t exec /home/ssoi/.screenlayout/double-screen.sh
+bindsym $mod+Control+o exec /home/ssoi/.screenlayout/single-screen.sh
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

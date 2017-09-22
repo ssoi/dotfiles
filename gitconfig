@@ -23,3 +23,8 @@
 	top = rev-parse --show-toplevel
 	logs = log --reverse -p  -S
 	drop = !"git stash save; git stash drop"
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
