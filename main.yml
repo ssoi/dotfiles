@@ -1,0 +1,9 @@
+- hosts: localhost
+  roles:
+      - common
+      - python
+      - bash
+      - i3
+      - vim
+      - git
+      - rstats
