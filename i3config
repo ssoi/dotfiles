@@ -121,6 +121,7 @@ bindsym $mod+Shift+v exec pavucontrol
 bindsym $mod+Shift+z exec zoom
 bindsym $mod+Shift+q exec lock -f Ubuntu-Medium -- scrot -z
 bindsym $mod+Shift+x exec xmind.sh
+bindsym $mod+Shift+n exec VNote_x86_64_1.11.1.AppImage
 
 
 # default workspaces for programs
@@ -135,6 +136,7 @@ for_window [class="zoom"] floating enable
 for_window [class="gnome-screenshot"] floating enable
 for_window [class="Arandr"] floating enable
 for_window [class="XMind"] floating enable
+for_window [class="VNote_x86_64_1.11.1.AppImage"] floating enable
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

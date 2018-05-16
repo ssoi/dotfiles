@@ -5,8 +5,8 @@ syntax on "enable highlighting and completion
 filetype plugin indent on
 set nocompatible	"prevents vim from emulating the original bugs
 set smartindent	"guess the indent level 
-set tabstop=2 "sets up 2-space tabs
-set shiftwidth=2 "use 2 spaces when text is indented
+set tabstop=4 "sets up 2-space tabs
+set shiftwidth=4 "use 2 spaces when text is indented
 set expandtab "replace tab with spaces when pressed
 set showmatch "jump to a brace match when you type a closing/opening brace
 set incsearch	"search for text as you enter it
