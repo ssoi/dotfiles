@@ -1,0 +1,8 @@
+#!/bin/bash
+
+BRIGHTNESS=$(cat /sys/class/backlight/intel_backlight/brightness)
+
+if (($BRIGHTNESS > 0)); then
+  BRIGHTNESS=$(( $BRIGHTNESS+100 ))
+  echo "echo $BRIGHTNESS > /sys/class/backlight/intel_backlight/brightness" | sudo bash
+fi

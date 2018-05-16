@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -x
+
+WPAPERSDIR="$HOME/Pictures/wallpaper"
+WPAPERSLIST=`ls $WPAPERSDIR/ | grep "\.jpe*g" | grep -v "wallpaper\.jpg$"`
+NUMWPAPERS=`echo $WPAPERSLIST | wc -w`
+RANDNUM=`echo $(( (RANDOM % NUMWPAPERS) + 1))`
+NEWWPAPER=`echo $WPAPERSLIST | tr ' ' '\n' | awk -F ':' -v NUM=$RANDNUM '{ if(NR == NUM) print $NF }'`
+
+cp $WPAPERSDIR/$NEWWPAPER $WPAPERSDIR/wallpaper.jpg
+feh --bg-scale $WPAPERSDIR/wallpaper.jpg
