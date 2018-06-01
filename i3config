@@ -24,7 +24,7 @@ font pango:Ubuntu Mono 14
 # startup
 exec_always /home/ssoi/dotfiles/bin/cycle-wallpaper
 exec_always nm-applet
-exec_alway setxkbmap -layout us -option ctrl:nocaps
+exec_always setxkbmap -layout us -option ctrl:nocaps
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
