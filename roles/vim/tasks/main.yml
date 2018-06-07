@@ -2,99 +2,74 @@
   apt:
       name: "{{ item }}"
       state: absent
-      with_items:
-          - vim
-          - vim-runtime
-          - vim-gnome
-          - vim-tiny
-          - vim-gui-common
+  with_items:
+      - vim
+      - vim-runtime
+      - vim-gnome
+      - vim-tiny
+      - vim-gui-common
 
 - name: install vim dependences
   apt:
       name: "{{ item }}"
       state: present
-      with_items:
-          - liblua5.1-dev
-          - luajit
-          - libluajit-5.1
-          - python-dev
-          - ruby-dev
-          - libperl-dev
-          - libncurses5-dev
-          - libatk1.0-dev
-          - libx11-dev
-          - libxpm-dev
-          - libxt-dev
+  with_items:
+      - liblua5.1-dev
+      - luajit
+      - libluajit-5.1-2
+      - libluajit-5.1-dev
+      - python-dev
+      - ruby-dev
+      - libperl-dev
+      - libncurses5-dev
+      - libatk1.0-dev
+      - libx11-dev
+      - libxpm-dev
+      - libxt-dev
 
 - name: download latest vim source
   git:
       repo: https://github.com/vim/vim
-      dest: /tmp/
+      dest: /tmp/vim/
 
 - name: configure vim installation
   shell: |
-      ./configure
-        --enable-multibyte
-        --enable-perlinterp=dynamic
-        --enable-rubyinterp=dynamic
-        --with-ruby-command=/usr/bin/ruby
-        --enable-pythoninterp=dynamic
-        --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu
-        --enable-python3interp
-        --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu
-        --enable-luainterp
-        --with-luajit
-        --enable-cscope
-        --enable-gui=auto
-        --with-features=huge
-        --with-x
-        --enable-fontset
-        --enable-largefile
-        --disable-netbeans
-        --with-compiledby="yourname"
-        --enable-fail-if-missin
-      args:
-          chdir: /tmp/vim/ 
+      ./configure --enable-multibyte --enable-perlinterp=dynamic --enable-rubyinterp=dynamic --with-ruby-command=/usr/bin/ruby --enable-pythoninterp=dynamic --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu --enable-python3interp --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu --enable-luainterp --with-luajit --enable-cscope --enable-gui=auto --with-features=huge --with-x --enable-fontset --enable-largefile --disable-netbeans --with-compiledby="Sameer Soi" --enable-fail-if-missing chdir=/tmp/vim/ 
 
 - name: make vim
-  command: make
-      args:
-          chdir: /tmp/vim/ 
-
+  command: make chdir=/tmp/vim/ 
+          
 - name: install vim
-  command: make install
-      args:
-          chdir: /tmp/vim/ 
+  command: make install chdir=/tmp/vim/ 
   become: true
 
 - name: copy vimrc
-  file:
+  copy:
       src: files/vimrc
-      dest: "{{ lookup('env','HOME') }}/.vimrc"
-      state: link
+      dest: "{{ home }}/.vimrc"
 
 - name: create pathogen directories
   file:
-      path: "{{ lookup('env','HOME') }}/.vim/{{ item }}"
+      path: "{{ home }}/.vim/{{ item }}"
       state: directory
-      with_items:
-          - autoload
-          - bundle
+  with_items:
+      - autoload
+      - bundle
 
 - name: install pathogen
   get_url:
       url: https://tpo.pe/pathogen.vim
-      dest: "{{ lookup('env','HOME') }}/.vim/autoload/" 
+      dest: "{{ home }}/.vim/autoload/" 
 
 - name: download plugins
   git:
-      repo: "https://github.com/{{ item }}.git"
-      dest: "{{ lookup('env','HOME') }}/.vim/bundle/"
-      with_items:
-          - ctrlpvim/ctrlp.vim
-          - tpope/vim-fugitive
-          - davidhalter/jedi-vim
-          - scrooloose/nerdtree
-          - altercation/vim-colors-solarized
-          - vim-airline/vim-airline
+      repo: "https://github.com/{{ item.user }}/{{ item.repo}}.git"
+      dest: "{{ home }}/.vim/bundle/{{ item.repo}}"
+  with_items:
+      - { user: 'ctrlpvim', repo: 'ctrlp.vim' }
+      - { user: 'tpope', repo: 'vim-fugitive' }
+      - { user: 'davidhalter', repo: 'jedi-vim' }
+      - { user: 'scrooloose', repo: 'nerdtree' }
+      - { user: 'altercation', repo: 'vim-colors-solarized' }
+      - { user: 'vim-airline', repo: 'vim-airline' }
 

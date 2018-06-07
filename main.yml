@@ -1,5 +1,9 @@
 - name: set up local dev machine
   hosts: 127.0.0.1
+  vars:
+      home: "{{ lookup('env', 'HOME') }}"
+      release: bionic
+      username: "{{ lookup('env', 'USER') }}" 
   connection: local
   become: true
   roles:
@@ -7,3 +11,4 @@
       - python
       - bash
       - vim
+      - i3

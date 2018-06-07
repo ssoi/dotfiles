@@ -1,27 +1,10 @@
 - name: set up bash config
-  file:
-    src: "files/{{ item.src }}"
-    dest: '{{ item.dest }}'
-    state: link
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ username }}"
+    group: "{{ username }}"
   with_items:
-    - { src: "bashrc", dest: ""{{ lookup('env','HOME') }}/.bashrc" }
-    - { src: "aliases", dest: ""{{ lookup('env','HOME') }}/.aliases" }
-    - { src: "tmuxconf", dest: ""{{ lookup('env','HOME') }}/.tmux.conf" }
-
-- name: clone package to solarize terminal
-  git: 
-    repo: https://github.com/Anthony25/gnome-terminal-colors-solarized.git
-    dest: /tmp/gnome-terminal-colors-solarized
-
-
-- name: install dependency for solarizing terminal
-  apt: 
-    name: dconf-cli
-    state: present
-    update_cache: yes
-
-- name: solarize terminal
-  shell: /tmp/gnome-terminal-colors-solarized/install.sh
-
-- name: use light theme
-  shell: /tmp/gnome-terminal-colors-solarized/set_light.sh
+    - { src: "bashrc", dest: "{{ home }}/.bashrc" }
+    - { src: "aliases", dest: "{{ home }}/.aliases" }
+    - { src: "tmuxconf", dest: "{{ home }}/.tmux.conf" }
