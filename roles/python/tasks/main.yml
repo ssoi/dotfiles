@@ -10,31 +10,35 @@
     - python3-dev
     - python-pip
     - python3-pip
-- name: check if miniconda directory exists
-  stat: path="{{ home }}/miniconda2"
-  register: miniconda
+- name: check if anaconda directory exists
+  stat: path="{{ home }}/anaconda3"
+  register: anaconda
 
-- name: download miniconda installation file
+- name: download anaconda installation file
   get_url:
-      url: http://repo.continuum.io/miniconda/Miniconda-latest-Linux-x86_64.sh
-      dest: /tmp/miniconda.sh
+      url: https://repo.anaconda.com/archive/Anaconda3-5.1.0-Linux-x86_64.sh
+      dest: /tmp/anaconda.sh
       owner: "{{ username }}"
       group: "{{ username }}"
       mode: 0755
-  when: miniconda.stat.exists == False
+  when: anaconda.stat.exists == False
 
-- name: install miniconda
-  shell: /tmp/miniconda.sh -b -p "{{ home }}/miniconda2/"
+- name: install anaconda
+  shell: /tmp/anaconda.sh -b -p "{{ home }}/anaconda3/"
       executable=/bin/bash
   become: true
   become_user: "{{ username }}"
-  when: miniconda.stat.exists == False
+  when: anaconda.stat.exists == False
 
 - name: install jupyter notebook
-  command: conda install -y jupyter chdir="{{ home }}/miniconda2/bin/"
+  command: conda install -y jupyter chdir="{{ home }}/anaconda3/bin/"
   environment:
-      PATH: "{{ home }}/miniconda2/bin/:$PATH"
+      PATH: "{{ home }}/anaconda3/bin/:$PATH"
+  become: true
+  become_user: "{{ username }}"
 
 - name: install jupyter client for 2.7 (needed for vim-ipython)
   pip:
       name: jupyter_client
+  become: true
+  become_user: "{{ username }}"
