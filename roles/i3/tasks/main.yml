@@ -51,9 +51,35 @@
     owner: "{{ username }}"
     group: "{{ username }}"
 
+- file:
+    path: "{{ home }}/.i3/bin"
+    state: directory
+    mode: 0755
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
 - name: copy i3 config
   copy:
     src: i3config
     dest: "{{ home }}/.i3/config"
     owner: "{{ username }}"
     group: "{{ username }}"
+
+- name: copy helper utils
+  copy:
+    src: "{{ item }}"
+    dest: "{{ home }}/.i3/bin/{{ item }}"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+  with_items:
+      - cycle-wallpaper
+      - brightness-up
+      - brightness-down
+
+- name: install i3 utils
+  apt:
+      name: "{{ item }}"
+      state: present
+  with_items:
+      - i3status
+      - i3lock-fancy
