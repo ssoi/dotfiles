@@ -83,3 +83,4 @@
   with_items:
       - i3status
       - i3lock-fancy
+      - feh
