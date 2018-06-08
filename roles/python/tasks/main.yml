@@ -40,5 +40,7 @@
 - name: install jupyter client for 2.7 (needed for vim-ipython)
   pip:
       name: jupyter_client
+  environment:
+      PATH: "{{ home }}/anaconda3/bin/:$PATH"
   become: true
   become_user: "{{ username }}"
