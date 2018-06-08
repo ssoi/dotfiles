@@ -8,6 +8,7 @@
       - vim-gnome
       - vim-tiny
       - vim-gui-common
+      - silversearcher-ag
 
 - name: copy vimrc
   copy:
@@ -45,5 +46,6 @@
       - { user: 'scrooloose', repo: 'nerdtree' }
       - { user: 'altercation', repo: 'vim-colors-solarized' }
       - { user: 'vim-airline', repo: 'vim-airline' }
+      - { user: 'vim-syntastic', repo: 'syntastic' }
   become: true
   become_user: "{{ username }}"

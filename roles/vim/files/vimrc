@@ -15,6 +15,7 @@ set number "number each line
 set relativenumber
 set mouse=a
 set clipboard=unnamed "unnammed register copied to system clipboard
+let mapleader = "," " set mapleader to a easier typable key
 
 let g:solarized_termcolors=256
 se t_Co=256
@@ -45,3 +46,12 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+map <C-n> :NERDTreeToggle<CR> " Open NERDTree with Ctrl-n 
+
+" Open NERDTree when Vim startsup and no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Close Vim if the only window left open is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
