@@ -1,0 +1,10 @@
+- name: set up bash config
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+  with_items:
+    - { src: "bashrc", dest: "{{ home }}/.bashrc" }
+    - { src: "aliases", dest: "{{ home }}/.aliases" }
+    - { src: "tmuxconf", dest: "{{ home }}/.tmux.conf" }

@@ -1,0 +1,46 @@
+- name: install python packages
+  apt:
+      name: "{{ item }}"
+      state: present
+      update_cache: yes
+  with_items:
+    - cmake
+    - build-essential
+    - python-dev
+    - python3-dev
+    - python-pip
+    - python3-pip
+- name: check if anaconda directory exists
+  stat: path="{{ home }}/anaconda3"
+  register: anaconda
+
+- name: download anaconda installation file
+  get_url:
+      url: https://repo.anaconda.com/archive/Anaconda3-5.1.0-Linux-x86_64.sh
+      dest: /tmp/anaconda.sh
+      owner: "{{ username }}"
+      group: "{{ username }}"
+      mode: 0755
+  when: anaconda.stat.exists == False
+
+- name: install anaconda
+  shell: /tmp/anaconda.sh -b -p "{{ home }}/anaconda3/"
+      executable=/bin/bash
+  become: true
+  become_user: "{{ username }}"
+  when: anaconda.stat.exists == False
+
+- name: install jupyter notebook
+  command: conda install -y jupyter chdir="{{ home }}/anaconda3/bin/"
+  environment:
+      PATH: "{{ home }}/anaconda3/bin/:$PATH"
+  become: true
+  become_user: "{{ username }}"
+
+- name: install jupyter client for 2.7 (needed for vim-ipython)
+  pip:
+      name: jupyter_client
+  environment:
+      PATH: "{{ home }}/anaconda3/bin/:$PATH"
+  become: true
+  become_user: "{{ username }}"

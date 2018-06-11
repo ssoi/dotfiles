@@ -1,0 +1,86 @@
+- name: install i3 dependencies
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - libxcb1-dev
+    - libxcb-keysyms1-dev
+    - libpango1.0-dev
+    - libxcb-util0-dev
+    - libxcb-icccm4-dev
+    - libyajl-dev
+    - libstartup-notification0-dev
+    - libxcb-randr0-dev
+    - libev-dev
+    - libxcb-cursor-dev
+    - libxcb-xinerama0-dev
+    - libxcb-xkb-dev
+    - libxkbcommon-dev
+    - libxkbcommon-x11-dev
+    - autoconf
+    - libxcb-xrm0
+    - libxcb-xrm-dev
+    - automake
+
+- name: download i3-gaps source
+  git:
+      repo: https://www.github.com/Airblader/i3
+      dest: /tmp/i3-gaps
+
+- name: setup i3-gaps
+  shell: autoreconf --force --install chdir=/tmp/i3-gaps
+
+- file:
+    path: /tmp/i3-gaps/build
+    state: directory
+    mode: 0755
+
+- name: setup i3-gaps
+  shell: ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers chdir=/tmp/i3-gaps/build
+
+- name: make i3
+  command: make chdir=/tmp/i3-gaps/build
+
+- name: make i3
+  command: make install chdir=/tmp/i3-gaps/build
+
+- file:
+    path: "{{ home }}/.i3"
+    state: directory
+    mode: 0755
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- file:
+    path: "{{ home }}/.i3/bin"
+    state: directory
+    mode: 0755
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: copy i3 config
+  copy:
+    src: i3config
+    dest: "{{ home }}/.i3/config"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: copy helper utils
+  copy:
+    src: "{{ item }}"
+    dest: "{{ home }}/.i3/bin/{{ item }}"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+  with_items:
+      - cycle-wallpaper
+      - brightness-up
+      - brightness-down
+
+- name: install i3 utils
+  apt:
+      name: "{{ item }}"
+      state: present
+  with_items:
+      - i3status
+      - i3lock-fancy
+      - feh

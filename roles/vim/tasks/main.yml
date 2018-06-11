@@ -1,0 +1,51 @@
+- name: install vim
+  apt:
+      name: "{{ item }}"
+      state: present
+  with_items:
+      - vim
+      - vim-runtime
+      - vim-gnome
+      - vim-tiny
+      - vim-gui-common
+      - silversearcher-ag
+
+- name: copy vimrc
+  copy:
+      src: files/vimrc
+      dest: "{{ home }}/.vimrc"
+      owner: "{{ username }}"
+      group: "{{ username }}"
+
+- name: create pathogen directories
+  file:
+      path: "{{ home }}/.vim/{{ item }}"
+      state: directory
+      owner: "{{ username }}"
+      group: "{{ username }}"
+  with_items:
+      - autoload
+      - bundle
+
+- name: install pathogen
+  get_url:
+      url: https://tpo.pe/pathogen.vim
+      dest: "{{ home }}/.vim/autoload/" 
+      owner: "{{ username }}"
+      group: "{{ username }}"
+
+- name: download plugins
+  git:
+      repo: "https://github.com/{{ item.user }}/{{ item.repo}}.git"
+      dest: "{{ home }}/.vim/bundle/{{ item.repo}}"
+      recursive: yes
+  with_items:
+      - { user: 'ctrlpvim', repo: 'ctrlp.vim' }
+      - { user: 'tpope', repo: 'vim-fugitive' }
+      - { user: 'Valloric', repo: 'YouCompleteMe' }
+      - { user: 'scrooloose', repo: 'nerdtree' }
+      - { user: 'altercation', repo: 'vim-colors-solarized' }
+      - { user: 'vim-airline', repo: 'vim-airline' }
+      - { user: 'vim-syntastic', repo: 'syntastic' }
+  become: true
+  become_user: "{{ username }}"
