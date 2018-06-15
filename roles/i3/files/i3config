@@ -120,7 +120,7 @@ bindsym $mod+Shift+s exec slack
 bindsym $mod+Shift+v exec pavucontrol
 bindsym $mod+Shift+z exec zoom
 bindsym $mod+Shift+q exec lock -f Ubuntu-Medium -- scrot -z
-bindsym $mod+Shift+x exec xmind.sh
+bindsym $mod+Shift+d exec dbeaver
 bindsym $mod+Shift+n exec VNote_x86_64_1.11.1.AppImage
 
 
