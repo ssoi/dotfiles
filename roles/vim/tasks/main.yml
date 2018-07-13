@@ -9,6 +9,7 @@
       - vim-tiny
       - vim-gui-common
       - silversearcher-ag
+      - exuberant-ctags
 
 - name: copy vimrc
   copy:
@@ -47,5 +48,6 @@
       - { user: 'altercation', repo: 'vim-colors-solarized' }
       - { user: 'vim-airline', repo: 'vim-airline' }
       - { user: 'vim-syntastic', repo: 'syntastic' }
+      - { user: 'majutsushi-syntastic', repo: 'tagbar' }
   become: true
   become_user: "{{ username }}"

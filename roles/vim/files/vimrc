@@ -55,3 +55,16 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Close Vim if the only window left open is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" UltiSnips trigger configuration
+let g:UltiSnipsExpandTrigger="<c-i>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+autocmd FileType py UltiSnipsAddFiletypes python
+
+" Add shortcut for Tagbar
+nmap <F8> :TagbarToggle<CR>
