@@ -22,9 +22,10 @@ set $mod Mod4
 font pango:Ubuntu Mono 14
 
 # startup
-exec_always /home/ssoi/dotfiles/bin/cycle-wallpaper
+exec_always $HOME/.i3/bin/cycle-wallpaper
 exec_always nm-applet
 exec_always setxkbmap -layout us -option ctrl:nocaps
+exec_always xautolock -detectsleep -time 3 -locker "$HOME/.i3/bin/i3lock-multimonitor/lock -i $HOME/Pictures/wallpaper/wallpaper.png"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -119,9 +120,9 @@ bindsym $mod+Shift+m exec spotify
 bindsym $mod+Shift+s exec slack
 bindsym $mod+Shift+v exec pavucontrol
 bindsym $mod+Shift+z exec zoom
-bindsym $mod+Shift+q exec lock -f Ubuntu-Medium -- scrot -z
+bindsym $mod+Shift+q exec USER=ssoi $HOME/.i3/bin/i3lock-multimonitor/lock -i $HOME/Pictures/wallpaper/wallpaper.png && echo mem > /sys/power/state
 bindsym $mod+Shift+d exec dbeaver
-bindsym $mod+Shift+n exec VNote_x86_64_1.11.1.AppImage
+bindsym $mod+Shift+n exec VNote-1.19-x86_64.AppImage
 
 
 # default workspaces for programs
