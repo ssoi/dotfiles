@@ -48,6 +48,6 @@
       - { user: 'altercation', repo: 'vim-colors-solarized' }
       - { user: 'vim-airline', repo: 'vim-airline' }
       - { user: 'vim-syntastic', repo: 'syntastic' }
-      - { user: 'majutsushi-syntastic', repo: 'tagbar' }
+      - { user: 'majutsushi', repo: 'tagbar' }
   become: true
   become_user: "{{ username }}"

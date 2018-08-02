@@ -106,8 +106,8 @@ bindsym $mod+Control+x restart
 bindsym $mod+Control+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # bind functional keys
-bindsym XF86MonBrightnessUp exec --no-startup-id sudo $HOME/dotfiles/bin/brightness-up
-bindsym XF86MonBrightnessDown exec --no-startup-id sudo $HOME/dotfiles/bin/brightness-down
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo $HOME/.i3/bin/brightness-up
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo $HOME/.i3/bin/brightness-down
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle
