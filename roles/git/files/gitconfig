@@ -1,17 +1,20 @@
 [user]
 	name = ssoi
-	email = sameer@driver.xyz
+	email = sameer.soi@grandrounds.com
 	
 [alias]
-	ci = commit
+    ci = commit
+    cim = "commit -am"
 	st = status
 	co = checkout
 	b = branch
 	rb = rebase
+	rbi = "rebase -i"
 	undo = "checkout --"
 	
 	l = log
 	d = diff
+	dl = "diff --summary"
 	dd = "diff --cached"
 	g = "grep --break --heading --line-number"
 	sl = "stash list --format='%gd: %C(bold)%C(red)%gs'"
@@ -24,7 +27,7 @@
 	logs = log --reverse -p  -S
 	drop = !"git stash save; git stash drop"
 [filter "lfs"]
-	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+	clean = git-lfs clean -- %f
