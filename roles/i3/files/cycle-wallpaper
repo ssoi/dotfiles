@@ -10,3 +10,5 @@ NEWWPAPER=`echo $WPAPERSLIST | tr ' ' '\n' | awk -F ':' -v NUM=$RANDNUM '{ if(NR
 
 cp $WPAPERSDIR/$NEWWPAPER $WPAPERSDIR/wallpaper.jpg
 feh --bg-scale $WPAPERSDIR/wallpaper.jpg
+convert -density 90 $WPAPERSDIR/wallpaper.jpg $WPAPERSDIR/wallpaper.png
+convert -density 90 -blur 0x5 $WPAPERSDIR/wallpaper.jpg $WPAPERSDIR/lock.png
