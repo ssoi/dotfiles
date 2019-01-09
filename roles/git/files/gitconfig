@@ -14,7 +14,7 @@
 	
 	l = log
 	d = diff
-	dl = "diff --summary"
+	dl = "diff --name-only"
 	dd = "diff --cached"
 	g = "grep --break --heading --line-number"
 	sl = "stash list --format='%gd: %C(bold)%C(red)%gs'"
@@ -27,7 +27,7 @@
 	logs = log --reverse -p  -S
 	drop = !"git stash save; git stash drop"
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+	smudge = git-lfs smudge --skip -- %f
+	process = git-lfs filter-process --skip
 	required = true
 	clean = git-lfs clean -- %f
