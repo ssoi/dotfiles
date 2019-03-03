@@ -43,11 +43,17 @@
   with_items:
       - { user: 'ctrlpvim', repo: 'ctrlp.vim' }
       - { user: 'tpope', repo: 'vim-fugitive' }
-      - { user: 'Valloric', repo: 'YouCompleteMe' }
+      - { user: 'Valloric', repo: 'YouCompleteMe', force: 'yes' }
       - { user: 'scrooloose', repo: 'nerdtree' }
       - { user: 'altercation', repo: 'vim-colors-solarized' }
       - { user: 'vim-airline', repo: 'vim-airline' }
       - { user: 'vim-syntastic', repo: 'syntastic' }
       - { user: 'majutsushi', repo: 'tagbar' }
+      - { user: 'ludovicchabant', repo: 'vim-gutentags' }
   become: true
   become_user: "{{ username }}"
+
+- name: install YouCompleteMe
+  command: python3 install.py
+  args:
+      chdir: "{{ home }}/.vim/bundle/YouCompleteMe/"
