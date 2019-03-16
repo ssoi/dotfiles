@@ -11,6 +11,25 @@
 
 set $mod Mod4
 
+# Create borders
+for_window [class="^.*"] border pixel 3
+
+new_window	pixel 2
+new_float	pixel 2
+
+# Gaps
+gaps inner 6
+gaps outer 4
+
+default_border pixel 4
+default_floating_border pixel 2
+
+# Hide gaps when only one window on screen
+smart_gaps on
+
+# Hide borders when only one window on screen
+hide_edge_borders smart
+
 # Change colors of windows and position of status bar
 client.focused          #3F8AC2 #096BAA #00BAA7 #00DA8E
 client.focused_inactive #333333 #5F676A #ffffff #484e50
