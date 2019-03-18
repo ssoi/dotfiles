@@ -29,6 +29,7 @@
   git:
       repo: https://github.com/ShikherVerma/i3lock-multimonitor.git
       dest: "{{ home }}/.i3/bin/i3lock-multimonitor"
+      force: yes
 
 - name: download i3-gaps source
   git:

@@ -15,6 +15,7 @@
     - tmux
     - curl
     - tree
+    - powertop
     - libcurl4-openssl-dev 
     - libxml2-dev
     - cmake
