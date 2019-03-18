@@ -1,0 +1,19 @@
+- name: copy over gitconfig
+  copy:
+      src: files/gitconfig
+      dest: "{{ home }}/.gitconfig"
+      owner: "{{ username }}"
+      group: "{{ username }}"
+
+- name: install rvm
+  shell: \curl -sSL https://get.rvm.io | bash -s stable
+
+- name: install ruby 2.1.1
+  command: rvm install 2.1.1
+
+- name: use ruby 2.1.1 by default
+  command: rvm --default use 2.1.1
+
+- name: install git-smart gem
+  gem:
+    name: git-smart

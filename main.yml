@@ -7,8 +7,9 @@
   connection: local
   become: true
   roles:
-      - common
-      - python
-      - bash
-      - vim
-      - i3
+#      - common
+      - git
+#      - python
+#      - bash
+#      - vim
+#      - i3

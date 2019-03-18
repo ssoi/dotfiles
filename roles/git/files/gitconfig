@@ -1,6 +1,6 @@
 [user]
 	name = ssoi
-	email = sameer.soi@grandrounds.com
+	email = sameersoi@gmail.com
 	
 [alias]
     ci = commit
@@ -11,14 +11,14 @@
 	rb = rebase
 	rbi = "rebase -i"
 	undo = "checkout --"
-	
+
 	l = log
 	d = diff
 	dl = "diff --name-only"
 	dd = "diff --cached"
 	g = "grep --break --heading --line-number"
 	sl = "stash list --format='%gd: %C(bold)%C(red)%gs'"
-	
+
 	spull = "smart-pull"
 	mine = !git log --reverse --oneline HEAD...@{upstream}
 	mines = !git show `git minel`
@@ -26,6 +26,7 @@
 	top = rev-parse --show-toplevel
 	logs = log --reverse -p  -S
 	drop = !"git stash save; git stash drop"
+
 [filter "lfs"]
 	smudge = git-lfs smudge --skip -- %f
 	process = git-lfs filter-process --skip
