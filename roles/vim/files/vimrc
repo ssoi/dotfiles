@@ -60,14 +60,18 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " UltiSnips trigger configuration
-let g:UltiSnipsExpandTrigger="<c-i>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<C-i>"
+let g:UltiSnipsJumpForwardTrigger="<C-b>"
+let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
 autocmd FileType py UltiSnipsAddFiletypes python
+
+" set default location of snippets directory
+let g:UltiSnipsSnippetDirectories = ['~/.vim/snippets']
+
 
 " Add shortcut for Tagbar
 nmap <F8> :TagbarToggle<CR>
