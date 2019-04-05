@@ -60,7 +60,7 @@
 
 - name: copy snippets directory
   copy:
-      src: files/vimrc/snippets
+      src: files/snippets
       dest: "{{ home }}/.vim/snippets"
       owner: "{{ username }}"
       group: "{{ username }}"
