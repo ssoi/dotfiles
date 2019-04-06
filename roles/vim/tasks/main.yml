@@ -47,7 +47,7 @@
       - { user: 'scrooloose', repo: 'nerdtree' }
       - { user: 'altercation', repo: 'vim-colors-solarized' }
       - { user: 'vim-airline', repo: 'vim-airline' }
-      - { user: 'vim-syntastic', repo: 'syntastic' }
+      - { user: 'w0rp', repo: 'ale' }
       - { user: 'majutsushi', repo: 'tagbar' }
       - { user: 'ludovicchabant', repo: 'vim-gutentags' }
   become: true

@@ -40,15 +40,15 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
 " Add gutentags to statusline
 set statusline+=%{gutentags#statusline()}
 
-" syntastic settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" ale settings
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_list_window_size = 5
 
 map <C-n> :NERDTreeToggle<CR> " Open NERDTree with Ctrl-n 
 
