@@ -1,0 +1,63 @@
+- name: Add an apt key by id from a keyserver
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: E298A3A825C0D65DFD57CBB651716619E084DAB9
+
+- name: Add repositories for RStan
+  apt_repository:
+    repo: "ppa:marutter/{{ item }}"
+  with_items:
+    - rrutter
+    - c2d4u3.5
+
+- name: add R repository
+  apt_repository:
+    repo: deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/
+    state: present
+
+- name: install R
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  with_items:
+    - r-base-core
+    - r-base-dev
+    - r-cran-pkgconfig
+    - r-cran-pkgkitten
+    - r-cran-assertthat
+    - r-cran-pkgconfig
+    - r-cran-lazyeval
+    - r-cran-rlang
+    - r-cran-rcpp
+    - r-cran-bindrcpp
+    - r-cran-rcppeigen
+    - r-cran-minqa
+    - r-cran-nloptr
+    - r-cran-gtable
+    - r-cran-reshape2
+    - r-cran-magrittr
+    - r-cran-plyr
+    - r-cran-dplyr
+    - r-cran-tibble
+    - r-cran-ggplot2
+    - r-cran-inline
+    - r-cran-lattice
+    - r-cran-lme4
+    - r-cran-mass
+    - r-cran-nlme
+    - r-cran-hexbin
+
+- name: copy Rprofile
+  copy:
+    src: files/Rprofile
+    dest: "{{ home }}/.Rprofile"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: copy custom functions
+  copy:
+    src: files/funcs.R
+    dest: "{{ home }}/funcs.R"
+    owner: "{{ username }}"
+    group: "{{ username }}"
