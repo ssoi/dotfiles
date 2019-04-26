@@ -147,7 +147,7 @@ bindsym $mod+Shift+v exec pavucontrol
 bindsym $mod+Shift+z exec zoom
 bindsym $mod+Shift+l exec USER=ssoi $HOME/.i3/bin/i3lock-multimonitor/lock -i $HOME/Pictures/wallpaper/lock.png && echo mem > /sys/power/state
 bindsym $mod+Shift+d exec dbeaver
-bindsym $mod+Shift+n exec VNote-1.19-x86_64.AppImage
+bindsym $mod+Shift+n exec VNote-2.4-x86_64.AppImage
 
 
 # default workspaces for programs
