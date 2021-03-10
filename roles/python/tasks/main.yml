@@ -29,18 +29,3 @@
   become: true
   become_user: "{{ username }}"
   when: anaconda.stat.exists == False
-
-- name: install jupyter notebook
-  command: conda install -y jupyter chdir="{{ home }}/anaconda3/bin/"
-  environment:
-      PATH: "{{ home }}/anaconda3/bin/:$PATH"
-  become: true
-  become_user: "{{ username }}"
-
-- name: install jupyter client for 2.7 (needed for vim-ipython)
-  pip:
-      name: jupyter_client
-  environment:
-      PATH: "{{ home }}/anaconda3/bin/:$PATH"
-  become: true
-  become_user: "{{ username }}"
