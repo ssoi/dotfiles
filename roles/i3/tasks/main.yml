@@ -68,3 +68,13 @@
   with_items:
       - i3blocks
       - feh
+
+- name: install kitty terminal
+  shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+
+- name: copy i3 config
+  copy:
+    src: solarized_kitty.conf
+    dest: "{{ home }}/.config/kitty/kitty-themes/themes/Solarized_Light.conf"
+    owner: "{{ username }}"
+    group: "{{ username }}"

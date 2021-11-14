@@ -5,7 +5,7 @@
   with_items:
       - vim
       - vim-runtime
-      - vim-gnome
+      - vim-gtk3
       - vim-tiny
       - vim-gui-common
       - silversearcher-ag

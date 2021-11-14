@@ -1,14 +1,9 @@
 - name: install python packages
-  apt:
-      name: "{{ item }}"
-      state: present
-      update_cache: yes
+  apt: name="{{ item }}" state="present" update_cache="yes"
   with_items:
     - cmake
     - build-essential
-    - python-dev
     - python3-dev
-    - python-pip
     - python3-pip
 - name: check if anaconda directory exists
   stat: path="{{ home }}/anaconda3"
