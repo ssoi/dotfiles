@@ -1,6 +1,9 @@
 - apt_repository:
     repo: ppa:aguignard/ppa
 
+- apt_repository:
+    repo: ppa:kgilmer/speed-ricer
+
 - name: install i3 dependencies
   apt:
     name: "{{ item }}"
@@ -24,34 +27,7 @@
     - libxcb-xrm0
     - libxcb-xrm-dev
     - automake
-
-- name: download i3-gaps source
-  git:
-      repo: https://github.com/ShikherVerma/i3lock-multimonitor.git
-      dest: "{{ home }}/.i3/bin/i3lock-multimonitor"
-      force: yes
-
-- name: download i3-gaps source
-  git:
-      repo: https://www.github.com/Airblader/i3
-      dest: /tmp/i3-gaps
-
-- name: setup i3-gaps
-  shell: autoreconf --force --install chdir=/tmp/i3-gaps
-
-- file:
-    path: /tmp/i3-gaps/build
-    state: directory
-    mode: 0755
-
-- name: setup i3-gaps
-  shell: ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers chdir=/tmp/i3-gaps/build
-
-- name: make i3
-  command: make chdir=/tmp/i3-gaps/build
-
-- name: make i3
-  command: make install chdir=/tmp/i3-gaps/build
+    - i3-gaps-wm
 
 - file:
     path: "{{ home }}/.i3"
@@ -90,5 +66,5 @@
       name: "{{ item }}"
       state: present
   with_items:
-      - i3status
+      - i3blocks
       - feh
