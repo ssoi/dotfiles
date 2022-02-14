@@ -69,12 +69,35 @@
       - i3blocks
       - feh
 
+- name: install polybar
+  apt:
+      name: polybar
+      state: present
+
+- name: copy polybar config
+  copy:
+    src: polybarconfig
+    dest: "{{ home }}/.config/polybar/config"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: copy polybar helpers
+  copy:
+    src: "{{ item }}"
+    dest: "{{ home }}/.config/polybar/{{ item }}"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+  with_items:
+      - launch.sh
+      - pavolume.sh
+
 - name: install kitty terminal
   shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
-- name: copy i3 config
+- name: copy kitty config
   copy:
     src: solarized_kitty.conf
     dest: "{{ home }}/.config/kitty/kitty-themes/themes/Solarized_Light.conf"
     owner: "{{ username }}"
     group: "{{ username }}"
+

@@ -49,7 +49,8 @@ font pango:Ubuntu Mono 12
 exec_always $HOME/.i3/bin/cycle-wallpaper
 exec_always nm-applet
 exec_always setxkbmap -layout us -option ctrl:nocaps
-#exec_always xautolock -detectsleep -time 3 -locker "$HOME/.i3/bin/i3lock-multimonitor/lock -i $HOME/Pictures/wallpaper/lock.png && echo mem /sys/power/state"
+exec_always xautolock -detectsleep -time 3 -locker "$HOME/.i3/bin/i3lock-multimonitor/lock -i $HOME/Pictures/wallpaper/lock.png && echo mem /sys/power/state"
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -193,9 +194,5 @@ bindsym $mod+r mode "resize"
 
 bindsym $mod+Control+d exec /home/ssoi/.screenlayout/double-display.sh
 bindsym $mod+Control+s exec /home/ssoi/.screenlayout/single-display.sh
-bar {
-   position top
-   status_command i3blocks
-}
 new_window normal 1
 new_float normal 1
