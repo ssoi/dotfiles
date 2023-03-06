@@ -1,7 +1,9 @@
-- apt_repository:
-    repo: ppa:aguignard/ppa
+- name: add PPA for i3-gaps
+  apt_repository:
+    repo: ppa:regolith-linux/release
 
-- apt_repository:
+- name: add PPA for polybar
+  apt_repository:
     repo: ppa:kgilmer/speed-ricer
 
 - name: install i3 dependencies
@@ -27,7 +29,7 @@
     - libxcb-xrm0
     - libxcb-xrm-dev
     - automake
-    - i3-gaps-wm
+    - i3-gaps
 
 - file:
     path: "{{ home }}/.i3"
@@ -74,22 +76,22 @@
       name: polybar
       state: present
 
+- name: copy polybar helpers
+  copy:
+    src: "{{ item }}"
+    dest: "{{ home }}/.config/polybar/"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+  with_items:
+      - launch.sh
+      - pavolume.sh
+
 - name: copy polybar config
   copy:
     src: polybarconfig
     dest: "{{ home }}/.config/polybar/config"
     owner: "{{ username }}"
     group: "{{ username }}"
-
-- name: copy polybar helpers
-  copy:
-    src: "{{ item }}"
-    dest: "{{ home }}/.config/polybar/{{ item }}"
-    owner: "{{ username }}"
-    group: "{{ username }}"
-  with_items:
-      - launch.sh
-      - pavolume.sh
 
 - name: install kitty terminal
   shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
@@ -98,6 +100,13 @@
   copy:
     src: solarized_kitty.conf
     dest: "{{ home }}/.config/kitty/kitty-themes/themes/Solarized_Light.conf"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+
+- name: copy dircolors config
+  copy:
+    src: dircolors
+    dest: "{{ home }}/.dir_colors"
     owner: "{{ username }}"
     group: "{{ username }}"
 
