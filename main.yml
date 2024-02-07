@@ -2,7 +2,7 @@
   hosts: 127.0.0.1
   vars:
       home: "{{ lookup('env', 'HOME') }}"
-      release: bionic
+      release: jammy
       username: "{{ lookup('env', 'USER') }}" 
   connection: local
   become: true

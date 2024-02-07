@@ -19,7 +19,7 @@
     - libcurl4-openssl-dev 
     - libxml2-dev
     - cmake
-    - ctags
+    - universal-ctags
     - chromium-browser
     - arandr
     - xorg-dev

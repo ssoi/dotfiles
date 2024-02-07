@@ -1,15 +1,20 @@
+- name: add PPA for neovim
+  apt_repository:
+    repo: ppa:neovim-ppa/unstable
+
 - name: install vim
   apt:
       name: "{{ item }}"
       state: present
   with_items:
+      - neovim
       - vim
       - vim-runtime
       - vim-gtk3
       - vim-tiny
       - vim-gui-common
       - silversearcher-ag
-      - exuberant-ctags
+      - universal-ctags
 
 - name: copy vimrc
   copy:
@@ -17,6 +22,17 @@
       dest: "{{ home }}/.vimrc"
       owner: "{{ username }}"
       group: "{{ username }}"
+
+- name: set up .vim directory
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0755
+    owner: "{{ username }}"
+    group: "{{ username }}"
+  with_items:
+    - "{{ home }}/.vim/autoload/" 
+    - "{{ home }}/.vim/pack/dist/start/"
 
 - name: install pathogen
   get_url:
@@ -27,7 +43,7 @@
 
 - name: download plugins
   git:
-      repo: "https://github.com/{{ item.user }}/{{ item.repo}}.git"
+      repo: "ssh://git@github.com/{{ item.user }}/{{ item.repo}}.git"
       dest: "{{ home }}/.vim/pack/dist/start/{{ item.repo}}"
       recursive: yes
   with_items:
@@ -40,6 +56,7 @@
       - { user: 'w0rp', repo: 'ale' }
       - { user: 'majutsushi', repo: 'tagbar' }
       - { user: 'ludovicchabant', repo: 'vim-gutentags' }
+      - { user: 'Exafunction', repo: 'codeium.vim' }
   become: true
   become_user: "{{ username }}"
 
@@ -56,3 +73,21 @@
       dest: "{{ home }}/.vim/snippets"
       owner: "{{ username }}"
       group: "{{ username }}"
+
+- name: set up nvim .config directory
+  file:
+    path: "{{ home }}/.config/nvim/"
+    state: directory
+    mode: 0755
+    owner: "{{ username }}"
+    group: "{{ username }}"
+  tags: neovim
+
+- name: copy neovim initvim
+  copy:
+      src: files/initvim
+      dest: "{{ home }}/.config/nvim/init.vim"
+      owner: "{{ username }}"
+      group: "{{ username }}"
+  tags: neovim
+
