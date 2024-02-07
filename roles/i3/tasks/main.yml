@@ -1,7 +1,3 @@
-- name: add PPA for polybar
-  apt_repository:
-    repo: ppa:kgilmer/speed-ricer
-
 - name: install i3 dependencies
   apt:
     name: "{{ item }}"
@@ -88,20 +84,10 @@
     owner: "{{ username }}"
     group: "{{ username }}"
 
-- name: install kitty terminal
-  shell: curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-
-- name: copy kitty config
-  copy:
-    src: solarized_kitty.conf
-    dest: "{{ home }}/.config/kitty/kitty-themes/themes/Solarized_Light.conf"
-    owner: "{{ username }}"
-    group: "{{ username }}"
-
 - name: copy dircolors config
   copy:
-    src: dircolors
-    dest: "{{ home }}/.dir_colors"
+    src: files/dircolors
+    dest: "{{ home }}/.dir_colors/dircolors"
     owner: "{{ username }}"
     group: "{{ username }}"
 

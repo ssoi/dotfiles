@@ -5,6 +5,7 @@
     - build-essential
     - python3-dev
     - python3-pip
+
 - name: check if anaconda directory exists
   stat: path="{{ home }}/anaconda3"
   register: anaconda

@@ -8,7 +8,8 @@
   become: true
   roles:
       #- common
+      #- git
       #- python
-      #- bash
+      - bash
       #- vim
-      - i3
+      #- i3
